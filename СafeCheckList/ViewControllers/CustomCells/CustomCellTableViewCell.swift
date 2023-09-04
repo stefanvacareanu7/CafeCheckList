@@ -10,6 +10,8 @@ import UIKit
 class CustomCellTableViewCell: UITableViewCell {
 
     // MARK: - IB Outlets
+    @IBOutlet weak var checkedImage: UIImageView!
+    @IBOutlet weak var uncheckedImage: UIImageView!
     @IBOutlet weak var starsRatingImage: UIImageView!
     @IBOutlet weak var cafeNameLable: UILabel!
     
@@ -33,6 +35,7 @@ extension CustomCellTableViewCell {
     func cellConfig(indexPath: IndexPath, dataModel: [Cafe]) {
         
         cafeNameLable.text = dataModel[indexPath.section].name
+        checkedImage.isHidden = true
         
         switch dataModel[indexPath.section].rating {
             case 0:
