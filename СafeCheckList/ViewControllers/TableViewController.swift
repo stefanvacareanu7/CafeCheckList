@@ -66,9 +66,7 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                             
                             // Reloading the cell
                             tableView.reloadRows(at: [indexPath], with: .none)
-                            
                     }
-                    
                 }
             }
         }
@@ -87,15 +85,15 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Creating and configuring a custom cell
+        // Creating and casting custom cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCellTableViewCell
-        
         
         // Configure the cell
         cell.cellConfig(indexPath: indexPath, dataModel: dataModel)
         
         return cell
     }
+    
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
