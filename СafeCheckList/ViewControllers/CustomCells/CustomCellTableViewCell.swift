@@ -15,6 +15,7 @@ class CustomCellTableViewCell: UITableViewCell {
     @IBOutlet weak var starsRatingImage: UIImageView!
     @IBOutlet weak var cafeNameLable: UILabel!
     
+    // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +27,8 @@ class CustomCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    
 }
 
 // MARK: - Methods
@@ -39,7 +42,7 @@ extension CustomCellTableViewCell {
         
         switch dataModel[indexPath.section].rating {
             case 0:
-                starsRatingImage.image = UIImage(named: "ostars")
+                starsRatingImage.image = UIImage(named: "0stars")
             case 1:
                 starsRatingImage.image = UIImage(named: "1star")
             case 2:
@@ -51,8 +54,9 @@ extension CustomCellTableViewCell {
             case 5:
                 starsRatingImage.image = UIImage(named: "5stars")
             default:
-                break
+                return
         }
+
     }
     
     

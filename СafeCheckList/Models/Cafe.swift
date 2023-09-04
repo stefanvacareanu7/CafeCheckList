@@ -9,9 +9,11 @@ import Foundation
 
 struct Cafe {
     
-    static var shared = [Cafe(name: "KFC", rating: 4, checked: false)]
+    // MARK: - Properties
+    static var shared = [Cafe(name: "Some Cafe", rating: 0, checked: false)]
     
     var name: String
     var rating: Int
     var checked: Bool
+    
 }
