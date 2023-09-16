@@ -10,6 +10,7 @@ import Foundation
 struct Cafe {
     
     // MARK: - Properties
+    
     static var shared = [Cafe(name: "Some Cafe", rating: 0, checked: false)]
     
     var name: String

@@ -8,32 +8,27 @@
 import UIKit
 
 class CustomCellTableViewCell: UITableViewCell {
-
+    
     // MARK: - IB Outlets
+    
     @IBOutlet weak var checkedImage: UIImageView!
     @IBOutlet weak var uncheckedImage: UIImageView!
     @IBOutlet weak var starsRatingImage: UIImageView!
     @IBOutlet weak var cafeNameLable: UILabel!
     
     // MARK: - Init
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    
     
 }
 
 // MARK: - Methods
+
 extension CustomCellTableViewCell {
-   
+    
     // Configure the cell
     func cellConfig(indexPath: IndexPath, dataModel: [Cafe]) {
         
@@ -56,9 +51,7 @@ extension CustomCellTableViewCell {
             default:
                 return
         }
-
     }
-    
     
 }
 
