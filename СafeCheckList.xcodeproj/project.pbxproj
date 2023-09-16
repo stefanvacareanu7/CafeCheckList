@@ -15,6 +15,7 @@
 		D20701982AA5B737002F6256 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20701972AA5B737002F6256 /* TableViewController.swift */; };
 		D207019A2AA5DFBA002F6256 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20701992AA5DFBA002F6256 /* CustomCellTableViewCell.swift */; };
 		D207019C2AA5DFE4002F6256 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207019B2AA5DFE4002F6256 /* Cafe.swift */; };
+		D2582A1F2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2582A1E2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D20701972AA5B737002F6256 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		D20701992AA5DFBA002F6256 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		D207019B2AA5DFE4002F6256 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		D2582A1E2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureHandlerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				D20701822AA5B6A3002F6256 /* AppDelegate.swift */,
 				D20701842AA5B6A3002F6256 /* SceneDelegate.swift */,
+				D2582A202AB5BF3700F9AAF2 /* DataManagers */,
 				D207019F2AA5E116002F6256 /* ViewControllers */,
 				D207019D2AA5DFEA002F6256 /* Models */,
 				D20701962AA5B6BB002F6256 /* Stroryboards */,
@@ -103,6 +106,14 @@
 				D207019E2AA5E10A002F6256 /* CustomCells */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D2582A202AB5BF3700F9AAF2 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				D2582A1E2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift */,
+			);
+			path = DataManagers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2582A1F2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift in Sources */,
 				D20701832AA5B6A3002F6256 /* AppDelegate.swift in Sources */,
 				D20701982AA5B737002F6256 /* TableViewController.swift in Sources */,
 				D207019C2AA5DFE4002F6256 /* Cafe.swift in Sources */,

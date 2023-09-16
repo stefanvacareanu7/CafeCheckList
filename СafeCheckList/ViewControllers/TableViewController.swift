@@ -12,6 +12,7 @@ class TableViewController: UITableViewController {
     // MARK: - Properties
     
     var dataModel = Cafe.shared
+    var gestureHandler: GestureHandler?
     
     
     // MARK: - viewDidLoad
@@ -19,17 +20,15 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gestureHandler = GestureHandler(tableView: tableView, dataModel: dataModel)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        tapGesture.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: gestureHandler, action: #selector(gestureHandler?.handleTap))
         tableView.addGestureRecognizer(tapGesture)
         
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    
     
     // MARK: - Table view
     
@@ -74,65 +73,6 @@ class TableViewController: UITableViewController {
         if editingStyle == .delete {
             dataModel.remove(at: indexPath.section)
             tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
-        }
-    }
-}
-
-// MARK: - Methods
-
-extension TableViewController: UIGestureRecognizerDelegate {
-    
-    // MARK: - Gesture recognizer section
-
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
-    }
-    
-    @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
-        let location = gestureRecognizer.location(in: tableView)
-        
-        if let indexPath = tableView.indexPathForRow(at: location) {
-            if let cell = tableView.cellForRow(at: indexPath) as? CustomCellTableViewCell {
-                
-                let locationInCell = gestureRecognizer.location(in: cell)
-                
-                if cell.starsRatingImage.frame.contains(locationInCell) {
-                    handleStarTap(at: indexPath, in: cell, location: gestureRecognizer.location(in: cell.starsRatingImage))
-                } else {
-                    handleCellTap(at: indexPath, in: cell)
-                }
-            }
-        }
-    }
-    
-    private func handleStarTap(at indexPath: IndexPath, in cell: CustomCellTableViewCell, location: CGPoint) {
-        // The width of each star in the rated image
-        let starWidth = cell.starsRatingImage.bounds.width / 5
-        
-        // Determine the index of the star the user clicked on
-        let starIndex = Int(location.x / starWidth)
-        
-        print("The star with index \(starIndex) was pressed in the section with index \(indexPath.section)")
-        
-        // Update the image according to the selected starIndex
-        let starImages = ["1star", "2stars", "3stars", "4stars", "5stars"]
-        if starIndex >= 0 && starIndex < starImages.count {
-            let imageName = starImages[starIndex]
-            cell.starsRatingImage.image = UIImage(named: imageName)
-        }
-        
-    }
-    
-    private func handleCellTap(at indexPath: IndexPath, in cell: CustomCellTableViewCell) {
-        dataModel[indexPath.section].checked = !dataModel[indexPath.section].checked
-        
-        if dataModel[indexPath.section].checked {
-            cell.uncheckedImage.isHidden = true
-            cell.checkedImage.isHidden = false
-        } else {
-            cell.uncheckedImage.isHidden = false
-            cell.checkedImage.isHidden = true
         }
     }
     
