@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GestureHandler: NSObject {
+class GestureHandlerManager: NSObject {
     
     // MARK: - Prperties
     
@@ -24,7 +24,7 @@ class GestureHandler: NSObject {
 
 // MARK: - Methods
 
-extension GestureHandler: UIGestureRecognizerDelegate {
+extension GestureHandlerManager: UIGestureRecognizerDelegate {
     
     // MARK: Gesture recognizer
     

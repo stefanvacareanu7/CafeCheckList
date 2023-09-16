@@ -12,7 +12,7 @@ class TableViewController: UITableViewController {
     // MARK: - Properties
     
     var dataModel = Cafe.shared
-    var gestureHandler: GestureHandler?
+    var gestureHandler: GestureHandlerManager?
     
     
     // MARK: - viewDidLoad
@@ -20,7 +20,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gestureHandler = GestureHandler(tableView: tableView, dataModel: dataModel)
+        gestureHandler = GestureHandlerManager(tableView: tableView, dataModel: dataModel)
         
         let tapGesture = UITapGestureRecognizer(target: gestureHandler, action: #selector(gestureHandler?.handleTap))
         tableView.addGestureRecognizer(tapGesture)
