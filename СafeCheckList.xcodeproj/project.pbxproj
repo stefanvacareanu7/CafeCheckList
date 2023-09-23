@@ -15,11 +15,13 @@
 		D20701982AA5B737002F6256 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20701972AA5B737002F6256 /* TableViewController.swift */; };
 		D207019A2AA5DFBA002F6256 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20701992AA5DFBA002F6256 /* CustomCellTableViewCell.swift */; };
 		D207019C2AA5DFE4002F6256 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207019B2AA5DFE4002F6256 /* Cafe.swift */; };
-		D2582A1F2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2582A1E2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift */; };
+		D208C9802ABF106500D7288F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208C97F2ABF106500D7288F /* StorageManager.swift */; };
+		D208C9822ABF25A100D7288F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208C9812ABF25A100D7288F /* Logger.swift */; };
+		D2E933E92AB82FB700125BE0 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E933E82AB82FB700125BE0 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D207017F2AA5B6A3002F6256 /* СafeCheckList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "СafeCheckList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D207017F2AA5B6A3002F6256 /* CafeCheckList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafeCheckList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20701822AA5B6A3002F6256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20701842AA5B6A3002F6256 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D20701892AA5B6A3002F6256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -29,7 +31,9 @@
 		D20701972AA5B737002F6256 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		D20701992AA5DFBA002F6256 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		D207019B2AA5DFE4002F6256 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
-		D2582A1E2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureHandlerManager.swift; sourceTree = "<group>"; };
+		D208C97F2ABF106500D7288F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		D208C9812ABF25A100D7288F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D2E933E82AB82FB700125BE0 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +58,7 @@
 		D20701802AA5B6A3002F6256 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D207017F2AA5B6A3002F6256 /* СafeCheckList.app */,
+				D207017F2AA5B6A3002F6256 /* CafeCheckList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				D20701972AA5B737002F6256 /* TableViewController.swift */,
+				D2E933E82AB82FB700125BE0 /* AddViewController.swift */,
 				D207019E2AA5E10A002F6256 /* CustomCells */,
 			);
 			path = ViewControllers;
@@ -111,7 +116,8 @@
 		D2582A202AB5BF3700F9AAF2 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
-				D2582A1E2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift */,
+				D208C97F2ABF106500D7288F /* StorageManager.swift */,
+				D208C9812ABF25A100D7288F /* Logger.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -119,9 +125,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D207017E2AA5B6A3002F6256 /* СafeCheckList */ = {
+		D207017E2AA5B6A3002F6256 /* CafeCheckList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D20701932AA5B6A4002F6256 /* Build configuration list for PBXNativeTarget "СafeCheckList" */;
+			buildConfigurationList = D20701932AA5B6A4002F6256 /* Build configuration list for PBXNativeTarget "CafeCheckList" */;
 			buildPhases = (
 				D207017B2AA5B6A3002F6256 /* Sources */,
 				D207017C2AA5B6A3002F6256 /* Frameworks */,
@@ -131,9 +137,9 @@
 			);
 			dependencies = (
 			);
-			name = "СafeCheckList";
+			name = CafeCheckList;
 			productName = "СafeList";
-			productReference = D207017F2AA5B6A3002F6256 /* СafeCheckList.app */;
+			productReference = D207017F2AA5B6A3002F6256 /* CafeCheckList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +150,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					D207017E2AA5B6A3002F6256 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -164,7 +170,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D207017E2AA5B6A3002F6256 /* СafeCheckList */,
+				D207017E2AA5B6A3002F6256 /* CafeCheckList */,
 			);
 		};
 /* End PBXProject section */
@@ -187,12 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2582A1F2AB5BF2E00F9AAF2 /* GestureHandlerManager.swift in Sources */,
 				D20701832AA5B6A3002F6256 /* AppDelegate.swift in Sources */,
+				D2E933E92AB82FB700125BE0 /* AddViewController.swift in Sources */,
 				D20701982AA5B737002F6256 /* TableViewController.swift in Sources */,
+				D208C9802ABF106500D7288F /* StorageManager.swift in Sources */,
 				D207019C2AA5DFE4002F6256 /* Cafe.swift in Sources */,
 				D207019A2AA5DFBA002F6256 /* CustomCellTableViewCell.swift in Sources */,
 				D20701852AA5B6A3002F6256 /* SceneDelegate.swift in Sources */,
+				D208C9822ABF25A100D7288F /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +230,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -254,6 +263,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -282,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -314,6 +325,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -404,7 +416,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D20701932AA5B6A4002F6256 /* Build configuration list for PBXNativeTarget "СafeCheckList" */ = {
+		D20701932AA5B6A4002F6256 /* Build configuration list for PBXNativeTarget "CafeCheckList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D20701942AA5B6A4002F6256 /* Debug */,
