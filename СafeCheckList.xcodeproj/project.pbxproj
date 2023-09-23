@@ -17,6 +17,7 @@
 		D207019C2AA5DFE4002F6256 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207019B2AA5DFE4002F6256 /* Cafe.swift */; };
 		D208C9802ABF106500D7288F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208C97F2ABF106500D7288F /* StorageManager.swift */; };
 		D208C9822ABF25A100D7288F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208C9812ABF25A100D7288F /* Logger.swift */; };
+		D25B4D312ABFA3A0007D17E9 /* UtilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B4D302ABFA3A0007D17E9 /* UtilityManager.swift */; };
 		D2E933E92AB82FB700125BE0 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E933E82AB82FB700125BE0 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		D207019B2AA5DFE4002F6256 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		D208C97F2ABF106500D7288F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D208C9812ABF25A100D7288F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D25B4D302ABFA3A0007D17E9 /* UtilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityManager.swift; sourceTree = "<group>"; };
 		D2E933E82AB82FB700125BE0 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 			children = (
 				D208C97F2ABF106500D7288F /* StorageManager.swift */,
 				D208C9812ABF25A100D7288F /* Logger.swift */,
+				D25B4D302ABFA3A0007D17E9 /* UtilityManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				D207019C2AA5DFE4002F6256 /* Cafe.swift in Sources */,
 				D207019A2AA5DFBA002F6256 /* CustomCellTableViewCell.swift in Sources */,
 				D20701852AA5B6A3002F6256 /* SceneDelegate.swift in Sources */,
+				D25B4D312ABFA3A0007D17E9 /* UtilityManager.swift in Sources */,
 				D208C9822ABF25A100D7288F /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

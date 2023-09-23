@@ -11,7 +11,7 @@ class AddViewController: UIViewController {
     
     // MARK: - Properties
     
-    var rating: Int?
+    var ratingInDataMadel: Int?
     var navigationTitle: String?
     var ratingCafe: Int?
     var cafeName: String?
@@ -23,27 +23,20 @@ class AddViewController: UIViewController {
     @IBOutlet weak var starRatingImage: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var notesAboutCafe: UITextView!
-    @IBOutlet weak var textFiled: UITextField!
+    @IBOutlet weak var cafeNameTextFiled: UITextField!
     
     // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveButton.isEnabled = false
         navigationItem.title = navigationTitle
-        
         notesAboutCafe.layer.borderWidth = 1.0
         notesAboutCafe.layer.borderColor = UIColor.systemGray6.cgColor
         notesAboutCafe.layer.cornerRadius = 8.0
-        
-        notesAboutCafe.text = notes == nil ? "Any notes about cafe" : notes
-        
-        
+        notesAboutCafe.text = notes
         originalNotesText = notesAboutCafe.text
-        
-        textFiled.text = cafeName
-        
+        cafeNameTextFiled.text = cafeName
         let starImageName = "\(ratingCafe ?? 0)stars"
         starRatingImage.image = UIImage(named: starImageName)
     }
@@ -95,7 +88,7 @@ extension AddViewController: UITextViewDelegate {
 extension AddViewController {
     
     func updateSaveButtonState() {
-        guard let text = textFiled.text else { return }
+        guard let text = cafeNameTextFiled.text else { return }
         
         let currentTextViewText = notesAboutCafe.text ?? ""
         let isTextViewChanged = currentTextViewText != originalNotesText
@@ -104,15 +97,15 @@ extension AddViewController {
         
         switch starRatingImage.image {
             case UIImage(named: "1stars"):
-                rating = 1
+                ratingInDataMadel = 1
             case UIImage(named: "2stars"):
-                rating = 2
+                ratingInDataMadel = 2
             case UIImage(named: "3stars"):
-                rating = 3
+                ratingInDataMadel = 3
             case UIImage(named: "4stars"):
-                rating = 4
+                ratingInDataMadel = 4
             case UIImage(named: "5stars"):
-                rating = 5
+                ratingInDataMadel = 5
             default:
                 return
         }

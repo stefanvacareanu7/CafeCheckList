@@ -56,17 +56,8 @@ class TableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // Process check or uncheck image
-        dataModel[indexPath.section].checked = !dataModel[indexPath.section].checked
-        
-        if let customCell = tableView.cellForRow(at: indexPath) as? CustomCellTableViewCell {
-            if dataModel[indexPath.section].checked {
-                customCell.uncheckedImage.isHidden = true
-                customCell.checkedImage.isHidden = false
-            } else {
-                customCell.uncheckedImage.isHidden = false
-                customCell.checkedImage.isHidden = true
-            }
-        }
+        UtilityManager.shared.dataModelCheckedImageStatus(dataModel: &dataModel, indexPath: indexPath)
+        UtilityManager.shared.hideOrUnhideImage(dataModel: dataModel, tableView: tableView, indexPath: indexPath)
         StorageManager.shared.saveToFile(dataModel: dataModel)
     }
     
@@ -107,30 +98,30 @@ class TableViewController: UITableViewController {
         guard let addViewController = segue.source as? AddViewController else { return }
         
         if segueInitiatedByAccessoryDetails == false {
-            let name = addViewController.textFiled.text ?? ""
-            let rating = addViewController.rating ?? 0
+            let name = addViewController.cafeNameTextFiled.text ?? ""
+            let rating = addViewController.ratingInDataMadel ?? 0
             let note = addViewController.notesAboutCafe.text ?? ""
-            // Добавление новой информации о кафе в модель данных
+            // Adding new cafe information to the data model
             let newSectionIndex = dataModel.count
             dataModel.append(Cafe(name: name, rating: rating, checked: false, note: note))
-            // Сохраняем изменения в файл
+            // Save changes to file
             StorageManager.shared.saveToFile(dataModel: dataModel)
             
-            // Вставка новой секции в tableView
+            // Inserting a new section in tableView
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.tableView.insertSections(IndexSet(integer: newSectionIndex), with: .automatic)
             }
         } else if segueInitiatedByAccessoryDetails == true {
             guard let indexPath = selectedIndexPath else { return }
-            // Обновление информации о кафе в модель данных
-            dataModel[indexPath.section].name = addViewController.textFiled.text ?? ""
-            dataModel[indexPath.section].rating = addViewController.rating ?? 0
+            // Updating cafe information to the data model
+            dataModel[indexPath.section].name = addViewController.cafeNameTextFiled.text ?? ""
+            dataModel[indexPath.section].rating = addViewController.ratingInDataMadel ?? 0
             dataModel[indexPath.section].note = addViewController.notesAboutCafe.text ?? ""
-            // Обновление секции в tableView
+            // Updating a section in a tableView
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
-            // Сохраняем изменения в файл
+            // Save changes to file
             StorageManager.shared.saveToFile(dataModel: dataModel)
         }
         segueInitiatedByAccessoryDetails = false
@@ -142,9 +133,9 @@ class TableViewController: UITableViewController {
 
 extension TableViewController: CustomCellDelegate {
     func starImageDidChange(imageName: String, forSection section: Int) {
-        // Получаем объект Cafe, соответствующий секции
+        // Geting the Cafe object corresponding to the section
         var selectedCafe = dataModel[section]
-        // Обновляем свойство rating объекта Cafe на основе имени изображения звезды
+        // Update the rating property of the Cafe object based on the name of the star image
         switch imageName {
             case "0stars":
                 selectedCafe.rating = 0
@@ -161,7 +152,7 @@ extension TableViewController: CustomCellDelegate {
             default:
                 selectedCafe.rating = 0
         }
-        // Обновляем модель данных в массиве dataModel и сохраняем в файл
+        // Updating the data model in the dataModel array and save it to a file
         dataModel[section] = selectedCafe
         StorageManager.shared.saveToFile(dataModel: dataModel)
     }
