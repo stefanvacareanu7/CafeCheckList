@@ -12,8 +12,9 @@ class TableViewController: UITableViewController {
     // MARK: - Properties
     
     var dataModel = Cafe.shared
-    var selectedIndexPath: IndexPath?
+    private var selectedIndexPath: IndexPath?
     var segueInitiatedByAccessoryDetails = false
+    
     
     // MARK: - viewDidLoad
     
@@ -23,8 +24,10 @@ class TableViewController: UITableViewController {
         if !dataModel.isEmpty {
             StorageManager.shared.loadFromFile(dataModel: dataModel) { cafe in
                 self.dataModel = cafe
+                self.tableView.reloadData()
             }
         }
+        
     }
     
     // MARK: - Table view
@@ -86,14 +89,16 @@ class TableViewController: UITableViewController {
         
         if segue.identifier == "addNewCafe" {
             segueInitiatedByAccessoryDetails = false
+            
             add?.navigationTitle = "Add new cafe"
         } else if segue.identifier == "editCafe" {
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                
                 segueInitiatedByAccessoryDetails = true
+                
                 add?.navigationTitle = "Edit cafe details"
                 add?.cafeName = dataModel[indexPath.section].name
                 add?.ratingCafe = dataModel[indexPath.section].rating
+                add?.notes = dataModel[indexPath.section].note
             }
         }
     }
@@ -104,33 +109,41 @@ class TableViewController: UITableViewController {
         if segueInitiatedByAccessoryDetails == false {
             let name = addViewController.textFiled.text ?? ""
             let rating = addViewController.rating ?? 0
+            let note = addViewController.notesAboutCafe.text ?? ""
             // Добавление новой информации о кафе в модель данных
             let newSectionIndex = dataModel.count
-            dataModel.append(Cafe(name: name, rating: rating, checked: false))
+            dataModel.append(Cafe(name: name, rating: rating, checked: false, note: note))
+            // Сохраняем изменения в файл
             StorageManager.shared.saveToFile(dataModel: dataModel)
             
             // Вставка новой секции в tableView
-            tableView.insertSections(IndexSet(integer: newSectionIndex), with: .automatic)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.tableView.insertSections(IndexSet(integer: newSectionIndex), with: .automatic)
+            }
         } else if segueInitiatedByAccessoryDetails == true {
             guard let indexPath = selectedIndexPath else { return }
-            
+            // Обновление информации о кафе в модель данных
             dataModel[indexPath.section].name = addViewController.textFiled.text ?? ""
             dataModel[indexPath.section].rating = addViewController.rating ?? 0
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            dataModel[indexPath.section].note = addViewController.notesAboutCafe.text ?? ""
+            // Обновление секции в tableView
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+            // Сохраняем изменения в файл
             StorageManager.shared.saveToFile(dataModel: dataModel)
-
         }
         segueInitiatedByAccessoryDetails = false
     }
     
 }
 
+// MARK: - Custom cell delegate
+
 extension TableViewController: CustomCellDelegate {
-    // Реализуем метод делегата для обновления модели данных
     func starImageDidChange(imageName: String, forSection section: Int) {
         // Получаем объект Cafe, соответствующий секции
         var selectedCafe = dataModel[section]
-        
         // Обновляем свойство rating объекта Cafe на основе имени изображения звезды
         switch imageName {
             case "0stars":
@@ -148,9 +161,9 @@ extension TableViewController: CustomCellDelegate {
             default:
                 selectedCafe.rating = 0
         }
-        
-        // Обновляем модель данных в массиве dataModel
+        // Обновляем модель данных в массиве dataModel и сохраняем в файл
         dataModel[section] = selectedCafe
+        StorageManager.shared.saveToFile(dataModel: dataModel)
     }
     
 }

@@ -14,16 +14,17 @@ class StorageManager {
     static var shared = StorageManager()
     private let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     private let plistUrl: URL
-
+    
     // MARK: - Init
     
     init() {
         self.plistUrl = documentDirectory.appendingPathComponent("CafeList").appendingPathExtension("plist")
     }
-
+    
 }
 
 // MARK: - Methods
+
 extension StorageManager {
     
     func saveToFile(dataModel: [Cafe]) {

@@ -54,9 +54,9 @@ class CustomCellTableViewCell: UITableViewCell {
                 starsRatingImage.image = UIImage(named: imageName)
                 
                 delegate?.starImageDidChange(imageName: imageName, forSection: indexPath.section)
-                
             }
         }
+        
     }
     
 }

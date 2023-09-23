@@ -11,13 +11,14 @@ struct Cafe: Codable {
     
     // MARK: - Properties
     
-    static var shared = [Cafe(name: "Some Cafe", rating: 0, checked: false)]
+    static var shared = [Cafe(name: "Some Cafe", rating: 0, checked: false, note: String())]
     
     var name: String
     var rating: Int
     var checked: Bool
+    var note: String
     var starImageName: String {
-            switch rating {
+        switch rating {
             case 0:
                 return "0stars"
             case 1:
@@ -32,7 +33,7 @@ struct Cafe: Codable {
                 return "5stars"
             default:
                 return "0stars"
-            }
         }
+    }
     
 }
