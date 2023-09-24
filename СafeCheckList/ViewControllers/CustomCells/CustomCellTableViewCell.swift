@@ -30,33 +30,13 @@ class CustomCellTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(starsGestRecognizer(_:)))
-        starsRatingImage.addGestureRecognizer(tapGestureRecognizer)
+        setupUI()
     }
     
     // MARK: - IB Actions
     
     @IBAction func starsGestRecognizer(_ sender: UITapGestureRecognizer) {
-        guard let tableView = tableView else { return }
-        let location = sender.location(in: tableView)
-        
-        if let indexPath = tableView.indexPathForRow(at: location) {
-            
-            let starWidth = starsRatingImage.bounds.width / totalStars
-            let starIndex = Int(sender.location(in: starsRatingImage).x / starWidth)
-            
-            Logger.log("The star with index \(starIndex) was pressed in section \(indexPath.section) row \(indexPath.row)")
-            
-            let starImages = ["1stars", "2stars", "3stars", "4stars", "5stars"]
-            if starIndex >= 0 && starIndex < starImages.count {
-                let imageName = starImages[starIndex]
-                starsRatingImage.image = UIImage(named: imageName)
-                
-                delegate?.starImageDidChange(imageName: imageName, forSection: indexPath.section)
-            }
-        }
-        
+        ActionManager.shared.updateStarsRating(image: starsRatingImage, in: sender, forTableView: tableView, delegate: delegate)
     }
     
 }
@@ -88,6 +68,11 @@ extension CustomCellTableViewCell {
             default:
                 return
         }
+    }
+    
+    private func setupUI() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(starsGestRecognizer(_:)))
+        starsRatingImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
 }

@@ -13,6 +13,10 @@ struct UtilityManager {
     
     static var shared = UtilityManager()
     
+    // MARK: - Init
+    
+    private init() {}
+    
 }
 
 // MARK: - Methods
@@ -32,6 +36,30 @@ extension UtilityManager {
                 customCell.uncheckedImage.isHidden = false
                 customCell.checkedImage.isHidden = true
             }
+        }
+    }
+    
+    func updateSaveButton(cafeName cafeNameTextFiled: UITextField, notes notesAboutCafe: UITextView, button saveButton: UIBarButtonItem, image starRatingImage: UIImageView, rating ratingInDataMadel: inout Int?, originalNotes originalNotesText: String?) {
+        guard let text = cafeNameTextFiled.text else { return }
+        
+        let currentTextViewText = notesAboutCafe.text ?? ""
+        let isTextViewChanged = currentTextViewText != originalNotesText
+        
+        saveButton.isEnabled = !text.isEmpty || isTextViewChanged
+        
+        switch starRatingImage.image {
+            case UIImage(named: "1stars"):
+                ratingInDataMadel = 1
+            case UIImage(named: "2stars"):
+                ratingInDataMadel = 2
+            case UIImage(named: "3stars"):
+                ratingInDataMadel = 3
+            case UIImage(named: "4stars"):
+                ratingInDataMadel = 4
+            case UIImage(named: "5stars"):
+                ratingInDataMadel = 5
+            default:
+                return
         }
     }
     

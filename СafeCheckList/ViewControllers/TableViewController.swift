@@ -20,14 +20,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if !dataModel.isEmpty {
-            StorageManager.shared.loadFromFile(dataModel: dataModel) { cafe in
-                self.dataModel = cafe
-                self.tableView.reloadData()
-            }
-        }
-        
+        setupUI()
     }
     
     // MARK: - Table view
@@ -62,7 +55,6 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
             dataModel.remove(at: indexPath.section)
             tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
@@ -76,20 +68,15 @@ class TableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let add = segue.destination as? AddViewController
+        guard let add = segue.destination as? AddViewController else { return }
         
         if segue.identifier == "addNewCafe" {
             segueInitiatedByAccessoryDetails = false
-            
-            add?.navigationTitle = "Add new cafe"
+            SeguePrepareManager.shared.addNewCafe(to: add)
         } else if segue.identifier == "editCafe" {
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 segueInitiatedByAccessoryDetails = true
-                
-                add?.navigationTitle = "Edit cafe details"
-                add?.cafeName = dataModel[indexPath.section].name
-                add?.ratingCafe = dataModel[indexPath.section].rating
-                add?.notes = dataModel[indexPath.section].note
+                SeguePrepareManager.shared.editCafe(to: add, model: &dataModel, indexPath: indexPath)
             }
         }
     }
@@ -97,31 +84,14 @@ class TableViewController: UITableViewController {
     @IBAction func  unwindSegueToMainScreen(segue: UIStoryboardSegue) {
         guard let addViewController = segue.source as? AddViewController else { return }
         
+        // Inserting a new section in tableView
         if segueInitiatedByAccessoryDetails == false {
-            let name = addViewController.cafeNameTextFiled.text ?? ""
-            let rating = addViewController.ratingInDataMadel ?? 0
-            let note = addViewController.notesAboutCafe.text ?? ""
-            // Adding new cafe information to the data model
-            let newSectionIndex = dataModel.count
-            dataModel.append(Cafe(name: name, rating: rating, checked: false, note: note))
-            // Save changes to file
+            UnwindManager.shared.insertNewSection(from: addViewController, model: &dataModel, table: tableView)
             StorageManager.shared.saveToFile(dataModel: dataModel)
-            
-            // Inserting a new section in tableView
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.tableView.insertSections(IndexSet(integer: newSectionIndex), with: .automatic)
-            }
         } else if segueInitiatedByAccessoryDetails == true {
-            guard let indexPath = selectedIndexPath else { return }
             // Updating cafe information to the data model
-            dataModel[indexPath.section].name = addViewController.cafeNameTextFiled.text ?? ""
-            dataModel[indexPath.section].rating = addViewController.ratingInDataMadel ?? 0
-            dataModel[indexPath.section].note = addViewController.notesAboutCafe.text ?? ""
-            // Updating a section in a tableView
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-            // Save changes to file
+            guard let indexPath = selectedIndexPath else { return }
+            UnwindManager.shared.updateCurrentSection(from: addViewController, model: &dataModel, indexPath: indexPath, table: tableView)
             StorageManager.shared.saveToFile(dataModel: dataModel)
         }
         segueInitiatedByAccessoryDetails = false
@@ -132,6 +102,7 @@ class TableViewController: UITableViewController {
 // MARK: - Custom cell delegate
 
 extension TableViewController: CustomCellDelegate {
+    
     func starImageDidChange(imageName: String, forSection section: Int) {
         // Geting the Cafe object corresponding to the section
         var selectedCafe = dataModel[section]
@@ -155,6 +126,20 @@ extension TableViewController: CustomCellDelegate {
         // Updating the data model in the dataModel array and save it to a file
         dataModel[section] = selectedCafe
         StorageManager.shared.saveToFile(dataModel: dataModel)
+    }
+    
+}
+
+// MARK: - Methods
+extension TableViewController {
+    
+    private func setupUI() {
+        if !dataModel.isEmpty {
+            StorageManager.shared.loadFromFile(dataModel: dataModel) { cafe in
+                self.dataModel = cafe
+                self.tableView.reloadData()
+            }
+        }
     }
     
 }

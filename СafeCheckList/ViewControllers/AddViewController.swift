@@ -29,32 +29,13 @@ class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = navigationTitle
-        notesAboutCafe.layer.borderWidth = 1.0
-        notesAboutCafe.layer.borderColor = UIColor.systemGray6.cgColor
-        notesAboutCafe.layer.cornerRadius = 8.0
-        notesAboutCafe.text = notes
-        originalNotesText = notesAboutCafe.text
-        cafeNameTextFiled.text = cafeName
-        let starImageName = "\(ratingCafe ?? 0)stars"
-        starRatingImage.image = UIImage(named: starImageName)
+        updateUI()
     }
     
     // MARK: - IB Actions
     
     @IBAction func gestRecognizerTapped(_ sender: UITapGestureRecognizer) {
-        let starWidth = starRatingImage.bounds.width / 5
-        let starIndex = Int(sender.location(in: starRatingImage).x / starWidth)
-        
-        Logger.log("The star with index \(starIndex) was pressed")
-        
-        let starImages = ["1stars", "2stars", "3stars", "4stars", "5stars"]
-        if starIndex >= 0 && starIndex < starImages.count {
-            let imageName = starImages[starIndex]
-            starRatingImage.image = UIImage(named: imageName)
-        }
-        
+        ActionManager.shared.updateStarsRating(image: starRatingImage, in: sender)
         updateSaveButtonState()
     }
     
@@ -77,6 +58,7 @@ extension AddViewController: UITextFieldDelegate {
 // MARK: - Text view delegate
 
 extension AddViewController: UITextViewDelegate {
+    
     func textViewDidChange(_ textView: UITextView) {
         updateSaveButtonState()
     }
@@ -88,26 +70,24 @@ extension AddViewController: UITextViewDelegate {
 extension AddViewController {
     
     func updateSaveButtonState() {
-        guard let text = cafeNameTextFiled.text else { return }
-        
-        let currentTextViewText = notesAboutCafe.text ?? ""
-        let isTextViewChanged = currentTextViewText != originalNotesText
-        
-        saveButton.isEnabled = !text.isEmpty || isTextViewChanged
-        
-        switch starRatingImage.image {
-            case UIImage(named: "1stars"):
-                ratingInDataMadel = 1
-            case UIImage(named: "2stars"):
-                ratingInDataMadel = 2
-            case UIImage(named: "3stars"):
-                ratingInDataMadel = 3
-            case UIImage(named: "4stars"):
-                ratingInDataMadel = 4
-            case UIImage(named: "5stars"):
-                ratingInDataMadel = 5
-            default:
-                return
-        }
+        UtilityManager.shared.updateSaveButton(cafeName: cafeNameTextFiled, 
+                                               notes: notesAboutCafe,
+                                               button: saveButton,
+                                               image: starRatingImage,
+                                               rating: &ratingInDataMadel,
+                                               originalNotes: originalNotesText)
     }
+    
+    private func updateUI() {
+        navigationItem.title = navigationTitle
+        notesAboutCafe.layer.borderWidth = 1.0
+        notesAboutCafe.layer.borderColor = UIColor.systemGray6.cgColor
+        notesAboutCafe.layer.cornerRadius = 8.0
+        notesAboutCafe.text = notes
+        originalNotesText = notesAboutCafe.text
+        cafeNameTextFiled.text = cafeName
+        let starImageName = "\(ratingCafe ?? 0)stars"
+        starRatingImage.image = UIImage(named: starImageName)
+    }
+    
 }

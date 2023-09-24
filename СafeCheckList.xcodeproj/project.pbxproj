@@ -18,6 +18,9 @@
 		D208C9802ABF106500D7288F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208C97F2ABF106500D7288F /* StorageManager.swift */; };
 		D208C9822ABF25A100D7288F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208C9812ABF25A100D7288F /* Logger.swift */; };
 		D25B4D312ABFA3A0007D17E9 /* UtilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B4D302ABFA3A0007D17E9 /* UtilityManager.swift */; };
+		D29F04B82AC0026D002F55AF /* UnwindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F04B72AC0026D002F55AF /* UnwindManager.swift */; };
+		D29F04BA2AC00C19002F55AF /* SeguePrepareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F04B92AC00C19002F55AF /* SeguePrepareManager.swift */; };
+		D29F04BC2AC01432002F55AF /* ActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F04BB2AC01432002F55AF /* ActionManager.swift */; };
 		D2E933E92AB82FB700125BE0 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E933E82AB82FB700125BE0 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		D208C97F2ABF106500D7288F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D208C9812ABF25A100D7288F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D25B4D302ABFA3A0007D17E9 /* UtilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityManager.swift; sourceTree = "<group>"; };
+		D29F04B72AC0026D002F55AF /* UnwindManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindManager.swift; sourceTree = "<group>"; };
+		D29F04B92AC00C19002F55AF /* SeguePrepareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeguePrepareManager.swift; sourceTree = "<group>"; };
+		D29F04BB2AC01432002F55AF /* ActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionManager.swift; sourceTree = "<group>"; };
 		D2E933E82AB82FB700125BE0 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +127,9 @@
 				D208C97F2ABF106500D7288F /* StorageManager.swift */,
 				D208C9812ABF25A100D7288F /* Logger.swift */,
 				D25B4D302ABFA3A0007D17E9 /* UtilityManager.swift */,
+				D29F04B72AC0026D002F55AF /* UnwindManager.swift */,
+				D29F04B92AC00C19002F55AF /* SeguePrepareManager.swift */,
+				D29F04BB2AC01432002F55AF /* ActionManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -196,8 +205,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29F04B82AC0026D002F55AF /* UnwindManager.swift in Sources */,
 				D20701832AA5B6A3002F6256 /* AppDelegate.swift in Sources */,
 				D2E933E92AB82FB700125BE0 /* AddViewController.swift in Sources */,
+				D29F04BA2AC00C19002F55AF /* SeguePrepareManager.swift in Sources */,
 				D20701982AA5B737002F6256 /* TableViewController.swift in Sources */,
 				D208C9802ABF106500D7288F /* StorageManager.swift in Sources */,
 				D207019C2AA5DFE4002F6256 /* Cafe.swift in Sources */,
@@ -205,6 +216,7 @@
 				D20701852AA5B6A3002F6256 /* SceneDelegate.swift in Sources */,
 				D25B4D312ABFA3A0007D17E9 /* UtilityManager.swift in Sources */,
 				D208C9822ABF25A100D7288F /* Logger.swift in Sources */,
+				D29F04BC2AC01432002F55AF /* ActionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
