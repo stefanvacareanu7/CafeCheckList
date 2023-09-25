@@ -1,5 +1,5 @@
 # CafeCheckList
-Tech Stack: Plist for storing data, MVC, GCD, UIKi, Delegates, TapGestures
+Tech Stack: Plist for storing data, MVC, GCD, UIKit, Delegates, TapGestures
 
 ## Start screen with cafe list
 ![Иллюстрация к проекту](https://github.com/Quasaryy/CafeCheckList/blob/main/1.png)
