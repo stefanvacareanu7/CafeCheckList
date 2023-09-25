@@ -1,6 +1,4 @@
 # CafeCheckList
-
-# VideoSurveillance
 Tech Stack: Plist for storing data, MVC, GCD, UIKi, Delegates, TapGestures
 
 ## Start screen with cafe list
