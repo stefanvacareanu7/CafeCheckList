@@ -58,6 +58,7 @@ class TableViewController: UITableViewController {
         if editingStyle == .delete {
             dataModel.remove(at: indexPath.section)
             tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+            StorageManager.shared.saveToFile(dataModel: dataModel)
         }
     }
     
