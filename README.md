@@ -11,10 +11,6 @@ SonarCloud
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Quasaryy_CafeCheckList&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Quasaryy_BookingHotel)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Quasaryy_CafeCheckList&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Quasaryy_BookingHotel)
 
-Codacy
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/836d75effa0349cfb8f6c55d38f935f4)](https://app.codacy.com/gh/Quasaryy/CafeCheckList/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-
 # Tech Stack
 Plist for storing data, MVC, GCD, UIKit, Delegates, TapGestures
 
