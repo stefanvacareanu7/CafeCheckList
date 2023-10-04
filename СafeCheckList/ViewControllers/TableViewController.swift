@@ -67,18 +67,16 @@ class TableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let add = segue.destination as? AddViewController else { return }
         
         if segue.identifier == "addNewCafe" {
             segueInitiatedByAccessoryDetails = false
             SeguePrepareManager.shared.addNewCafe(to: add)
-        } else if segue.identifier == "editCafe" {
-            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                segueInitiatedByAccessoryDetails = true
-                SeguePrepareManager.shared.editCafe(to: add, model: &dataModel, indexPath: indexPath)
-            }
+        } else if segue.identifier == "editCafe", let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+            segueInitiatedByAccessoryDetails = true
+            SeguePrepareManager.shared.editCafe(to: add, model: &dataModel, indexPath: indexPath)
         }
     }
     
@@ -86,10 +84,10 @@ class TableViewController: UITableViewController {
         guard let addViewController = segue.source as? AddViewController else { return }
         
         // Inserting a new section in tableView
-        if segueInitiatedByAccessoryDetails == false {
+        if !segueInitiatedByAccessoryDetails {
             UnwindManager.shared.insertNewSection(from: addViewController, model: &dataModel, table: tableView)
             StorageManager.shared.saveToFile(dataModel: dataModel)
-        } else if segueInitiatedByAccessoryDetails == true {
+        } else if segueInitiatedByAccessoryDetails {
             // Updating cafe information to the data model
             guard let indexPath = selectedIndexPath else { return }
             UnwindManager.shared.updateCurrentSection(from: addViewController, model: &dataModel, indexPath: indexPath, table: tableView)
