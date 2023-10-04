@@ -15,6 +15,7 @@ class SeguePrepareManager {
     
     // MARK: - Init
     
+    // Закрытый инициализатор, чтобы предотвратить создание новых экземпляров класса
     private init() {}
     
 }
