@@ -12,12 +12,17 @@ class StorageManager {
     // MARK: - Properties
     
     static var shared = StorageManager()
-    private let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    private var documentDirectory: URL!
     private let plistUrl: URL
     
     // MARK: - Init
     
     init() {
+        if let firstDocumentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+               self.documentDirectory = firstDocumentDirectoryURL
+           } else {
+               fatalError("Не удалось получить URL документов")
+           }
         self.plistUrl = documentDirectory.appendingPathComponent("CafeList").appendingPathExtension("plist")
     }
     
