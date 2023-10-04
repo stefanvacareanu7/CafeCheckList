@@ -35,7 +35,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCellTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CustomCellTableViewCell else { return UITableViewCell() }
         
         cell.delegate = self
         cell.tableView = tableView
@@ -74,7 +74,8 @@ class TableViewController: UITableViewController {
         if segue.identifier == "addNewCafe" {
             segueInitiatedByAccessoryDetails = false
             SeguePrepareManager.shared.addNewCafe(to: add)
-        } else if segue.identifier == "editCafe", let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+        } else if segue.identifier == "editCafe" {
+            guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else { return }
             segueInitiatedByAccessoryDetails = true
             SeguePrepareManager.shared.editCafe(to: add, model: &dataModel, indexPath: indexPath)
         }
