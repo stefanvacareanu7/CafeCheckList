@@ -11,7 +11,7 @@ enum Logger {
     
     // MARK: - Properties
     
-    static var isLoggingEnabled = true // Flag to enable/disable logging1
+    static var isLoggingEnabled = true // Flag to enable/disable logging
     
 }
 
